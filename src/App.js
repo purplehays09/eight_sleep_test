@@ -138,50 +138,60 @@ function App() {
 
       <NavBar />
 
+      <section id="header">
+
+
+
+      <h3 id='headerTitle'>Do you want to filter by letter or breed?</h3>
+
       <FormGroup id='form'>
           <Input type='select' name='alpha' onChange={handleInputChange}>
               <option value=''>Select a Letter</option>
               {
-                  alpha.map(letter => {
-                      return <option value={letter} key={letter}>{letter}</option>
-                  })
+                alpha.map(letter => {
+                  return <option value={letter} key={letter}>{letter}</option>
+                })
               }
           </Input>
            <h4>-- OR --</h4>
           <Input type='select' name='breed' onChange={handleInputChange}>
               <option>Select a Breed</option>
               {
-                  breeds.map(breed => {
-                      return <option value={breed} key={breed}>{breed}</option>
-                  })
+                breeds.map(breed => {
+                  return <option value={breed} key={breed}>{breed}</option>
+                })
               }
           </Input>
 
           {
-              subreeds.length > 1 &&
-              <Input type='select' name='subreed' onChange={handleInputChange}>
+            subreeds.length > 1 &&
+            <Input type='select' name='subreed' onChange={handleInputChange}>
                       <option>Select a Subreed</option>
                   {
-                      subreeds.map(subreed => {
-                          return <option value={subreed} key={subreed}>{subreed}</option>
-                      })
+                    subreeds.map(subreed => {
+                      return <option value={subreed} key={subreed}>{subreed}</option>
+                    })
                   }
                   </Input>
           }
         </FormGroup>
       {
-          options.alpha !== ''?
-              <Link to={`/alpha/${options.alpha}`}>
+        options.alpha !== ''?
+        <Link to={`/alpha/${options.alpha}`}>
                   <Button>Submit</Button>
               </Link>:
           options.subreed === '' ?
-              <Link to={`/${options.breed}`}>
+          <Link to={`/${options.breed}`}>
                   <Button>Submit</Button>
               </Link> :
               <Link to={`/${options.breed}/${options.subreed}`}>
                   <Button>Submit</Button>
               </Link> 
       }
+      </section>
+
+      <h3>Dogs</h3>
+      <p>Just click any picutre you want to add it to your favorites!</p>
 
 
       <Switch>
